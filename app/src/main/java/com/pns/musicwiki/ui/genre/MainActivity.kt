@@ -2,6 +2,8 @@ package com.pns.musicwiki.ui.genre
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.ViewModelProvider
@@ -39,8 +41,15 @@ class MainActivity : AppCompatActivity() {
             genreList.addAll(genres)
             genreList.shuffle()
 
-            if (genreList.size > 12) {
-                adapter.updateDataset(genreList.subList(0, 12))
+            if (genreList.isEmpty()){
+                Toast.makeText(this@MainActivity, "No response", Toast.LENGTH_LONG).show()
+            } else{
+                binding.progressBar.visibility = View.GONE
+                binding.recyclerview.visibility = View.VISIBLE
+            }
+
+            if (genreList.size > 10) {
+                adapter.updateDataset(genreList.subList(0, 10))
             } else {
                 adapter.updateDataset(genreList)
             }
@@ -66,7 +75,7 @@ class MainActivity : AppCompatActivity() {
                             null
                         )
                     )
-                    adapter.updateDataset(genreList.subList(0, 12))
+                    adapter.updateDataset(genreList.subList(0, 10))
                 } else {
                     isGenreListExpanded = true
                     setImageDrawable(
