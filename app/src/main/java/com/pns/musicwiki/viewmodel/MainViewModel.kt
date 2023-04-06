@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.pns.musicwiki.data.albumdetails.AlbumD
 import com.pns.musicwiki.data.genre.Tag
 import com.pns.musicwiki.data.genredetails.TagAlbum
 import com.pns.musicwiki.data.genredetails.album.Album
@@ -28,6 +29,9 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
 
     private val _genreTracksResponse: MutableLiveData<List<Track>> = MutableLiveData()
     val genreTracksResponse: LiveData<List<Track>> = _genreTracksResponse
+
+    private val _albumDetailsResponse: MutableLiveData<AlbumD> = MutableLiveData()
+    val albumDetailsResponse: LiveData<AlbumD> = _albumDetailsResponse
 
     init {
         viewModelScope.launch {
@@ -70,6 +74,15 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
             val response = repository.getGenreATracks(genre)
             if (response.isSuccessful) {
                 _genreTracksResponse.value = response.body()!!.tracks.track
+            }
+        }
+    }
+
+    fun getAlbumDetails(artist: String, album: String) {
+        viewModelScope.launch {
+            val response = repository.getAlbumDetails(artist, album)
+            if (response.isSuccessful) {
+                _albumDetailsResponse.value = response.body()!!.album
             }
         }
     }
