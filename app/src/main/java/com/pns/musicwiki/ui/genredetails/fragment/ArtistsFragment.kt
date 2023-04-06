@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.pns.musicwiki.data.genredetails.artist.Artist
@@ -45,6 +46,13 @@ class ArtistsFragment(private var genreName: String) : Fragment() {
             artistList.addAll(artists)
             artistList.shuffle()
             adapter.notifyDataSetChanged()
+
+            if (artistList.isEmpty()){
+                Toast.makeText(context, "No response", Toast.LENGTH_LONG).show()
+            } else{
+                binding.progressBar.visibility = View.GONE
+                binding.recyclerview.visibility = View.VISIBLE
+            }
         }
     }
 
