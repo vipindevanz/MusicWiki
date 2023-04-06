@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.ViewModelProvider
 import com.pns.musicwiki.R
-import com.pns.musicwiki.data.Tag
+import com.pns.musicwiki.data.genre.Tag
 import com.pns.musicwiki.databinding.ActivityMainBinding
 import com.pns.musicwiki.repository.Repository
 import com.pns.musicwiki.viewmodel.MainViewModel

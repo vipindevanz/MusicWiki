@@ -6,7 +6,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.pns.musicwiki.data.Tag
+import com.pns.musicwiki.data.genre.Tag
 import com.pns.musicwiki.databinding.GenreItemLayoutBinding
 import com.pns.musicwiki.ui.genredetails.GenreDetailActivity
 
