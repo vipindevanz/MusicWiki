@@ -1,4 +1,4 @@
-package com.pns.musicwiki.data
+package com.pns.musicwiki.data.genre
 
 data class Attr(
     val num_res: Int,

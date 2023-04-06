@@ -1,4 +1,4 @@
-package com.pns.musicwiki.data
+package com.pns.musicwiki.data.genre
 
 import com.google.gson.annotations.SerializedName
 
