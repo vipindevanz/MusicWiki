@@ -1,11 +1,17 @@
 package com.pns.musicwiki.repository
 
-import com.pns.musicwiki.data.GenreResponse
+import com.pns.musicwiki.data.genre.GenreResponse
+import com.pns.musicwiki.data.genredetails.GenreDetailsResponse
 import com.pns.musicwiki.data.network.ApiClient
 import retrofit2.Response
 
 class Repository {
-    suspend fun getTopTags(): Response<GenreResponse> {
-        return ApiClient.getWikiApi().getTopTags()
+
+    suspend fun getGenres(): Response<GenreResponse> {
+        return ApiClient.getWikiApi().getGenres()
+    }
+
+    suspend fun getGenresDetails(genre :String): Response<GenreDetailsResponse>{
+        return ApiClient.getWikiApi().getGenresDetails(genre)
     }
 }
