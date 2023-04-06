@@ -3,6 +3,7 @@ package com.pns.musicwiki.repository
 import com.pns.musicwiki.data.genre.GenreResponse
 import com.pns.musicwiki.data.genredetails.GenreDetailsResponse
 import com.pns.musicwiki.data.genredetails.album.AlbumResponse
+import com.pns.musicwiki.data.genredetails.artist.ArtistResponse
 import com.pns.musicwiki.data.network.ApiClient
 import retrofit2.Response
 
@@ -18,5 +19,9 @@ class Repository {
 
     suspend fun getGenreAlbum(genre: String): Response<AlbumResponse> {
         return ApiClient.getWikiApi().getAlbums(genre)
+    }
+
+    suspend fun getTagArtist(genre:String):Response<ArtistResponse>{
+        return ApiClient.getWikiApi().getArtists(genre)
     }
 }
