@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pns.musicwiki.data.albumdetails.AlbumD
+import com.pns.musicwiki.data.artistdetails.topalbums.AlbumT
+import com.pns.musicwiki.data.artistdetails.toptracks.TrackT
 import com.pns.musicwiki.data.genre.Tag
 import com.pns.musicwiki.data.genredetails.TagAlbum
 import com.pns.musicwiki.data.genredetails.album.Album
@@ -32,6 +34,17 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
 
     private val _albumDetailsResponse: MutableLiveData<AlbumD> = MutableLiveData()
     val albumDetailsResponse: LiveData<AlbumD> = _albumDetailsResponse
+
+    private val _artistInfoResponse: MutableLiveData<com.pns.musicwiki.data.artistdetails.Artist> =
+        MutableLiveData()
+    val artistInfoResponse: LiveData<com.pns.musicwiki.data.artistdetails.Artist> =
+        _artistInfoResponse
+
+    private val _artistTopAlbumsResponse: MutableLiveData<List<AlbumT>> = MutableLiveData()
+    val artistTopAlbumsResponse: LiveData<List<AlbumT>> = _artistTopAlbumsResponse
+
+    private val _artistTopTracksResponse: MutableLiveData<List<TrackT>> = MutableLiveData()
+    val artistTopTracksResponse: LiveData<List<TrackT>> = _artistTopTracksResponse
 
     init {
         viewModelScope.launch {
@@ -84,6 +97,36 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
             if (response.isSuccessful) {
                 _albumDetailsResponse.value = response.body()!!.album
             }
+        }
+    }
+
+    fun getArtistInfo(artist: String) {
+        viewModelScope.launch {
+            val response = repository.getArtistInfo(artist)
+            if (response.isSuccessful) {
+                _artistInfoResponse.value = response.body()!!.artist
+            }
+
+        }
+    }
+
+    fun getArtistTopAlbums(artist: String) {
+        viewModelScope.launch {
+            val response = repository.getArtistTopAlbums(artist)
+            if (response.isSuccessful) {
+                _artistTopAlbumsResponse.value = response.body()!!.topalbums.album
+            }
+
+        }
+    }
+
+    fun getArtistTopTracks(artist: String) {
+        viewModelScope.launch {
+            val response = repository.getArtistTopTracks(artist)
+            if (response.isSuccessful) {
+                _artistTopTracksResponse.value = response.body()!!.toptracks.track
+            }
+
         }
     }
 }
