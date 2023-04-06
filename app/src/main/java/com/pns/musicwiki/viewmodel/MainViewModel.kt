@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.pns.musicwiki.data.genre.Tag
 import com.pns.musicwiki.data.genredetails.TagAlbum
 import com.pns.musicwiki.data.genredetails.album.Album
+import com.pns.musicwiki.data.genredetails.artist.Artist
 import com.pns.musicwiki.repository.Repository
 import kotlinx.coroutines.launch
 
@@ -21,6 +22,8 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
     private val _genreAlbumsResponse: MutableLiveData<List<Album>> = MutableLiveData()
     val genreAlbumsResponse: LiveData<List<Album>> = _genreAlbumsResponse
 
+    private val _genreArtistsResponse : MutableLiveData<List<Artist>> = MutableLiveData()
+    val genreArtistsResponse: LiveData<List<Artist>> = _genreArtistsResponse
 
     init {
         viewModelScope.launch {
@@ -46,6 +49,16 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
             if (response.isSuccessful) {
                 _genreAlbumsResponse.value = response.body()!!.albums.album
             }
+        }
+    }
+
+    fun getGenreArtists(genre:String){
+        viewModelScope.launch {
+            val response = repository.getTagArtist(genre)
+            if(response.isSuccessful){
+                _genreArtistsResponse.value = response.body()!!.topartists.artist
+            }
+
         }
     }
 }
