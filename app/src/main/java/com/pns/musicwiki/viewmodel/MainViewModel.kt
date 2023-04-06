@@ -8,6 +8,7 @@ import com.pns.musicwiki.data.genre.Tag
 import com.pns.musicwiki.data.genredetails.TagAlbum
 import com.pns.musicwiki.data.genredetails.album.Album
 import com.pns.musicwiki.data.genredetails.artist.Artist
+import com.pns.musicwiki.data.genredetails.tracks.Track
 import com.pns.musicwiki.repository.Repository
 import kotlinx.coroutines.launch
 
@@ -22,8 +23,11 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
     private val _genreAlbumsResponse: MutableLiveData<List<Album>> = MutableLiveData()
     val genreAlbumsResponse: LiveData<List<Album>> = _genreAlbumsResponse
 
-    private val _genreArtistsResponse : MutableLiveData<List<Artist>> = MutableLiveData()
+    private val _genreArtistsResponse: MutableLiveData<List<Artist>> = MutableLiveData()
     val genreArtistsResponse: LiveData<List<Artist>> = _genreArtistsResponse
+
+    private val _genreTracksResponse: MutableLiveData<List<Track>> = MutableLiveData()
+    val genreTracksResponse: LiveData<List<Track>> = _genreTracksResponse
 
     init {
         viewModelScope.launch {
@@ -52,13 +56,21 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
         }
     }
 
-    fun getGenreArtists(genre:String){
+    fun getGenreArtists(genre: String) {
         viewModelScope.launch {
-            val response = repository.getTagArtist(genre)
-            if(response.isSuccessful){
+            val response = repository.getGenreArtist(genre)
+            if (response.isSuccessful) {
                 _genreArtistsResponse.value = response.body()!!.topartists.artist
             }
+        }
+    }
 
+    fun getGenreTracks(genre: String) {
+        viewModelScope.launch {
+            val response = repository.getGenreATracks(genre)
+            if (response.isSuccessful) {
+                _genreTracksResponse.value = response.body()!!.tracks.track
+            }
         }
     }
 }
