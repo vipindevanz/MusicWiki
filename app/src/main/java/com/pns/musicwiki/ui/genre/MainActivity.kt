@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
 
-        viewModel.topTagResponse.observe(this) { genres ->
+        viewModel.genreResponse.observe(this) { genres ->
 
             genreList.clear()
             genreList.addAll(genres)
