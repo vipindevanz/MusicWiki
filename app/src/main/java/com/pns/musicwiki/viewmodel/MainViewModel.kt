@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pns.musicwiki.data.genre.Tag
 import com.pns.musicwiki.data.genredetails.TagAlbum
+import com.pns.musicwiki.data.genredetails.album.Album
 import com.pns.musicwiki.repository.Repository
 import kotlinx.coroutines.launch
 
@@ -14,8 +15,12 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
     private val _genreResponse: MutableLiveData<List<Tag>> = MutableLiveData()
     val genreResponse: LiveData<List<Tag>> = _genreResponse
 
-    private val _genreDetailsResponse : MutableLiveData<TagAlbum> = MutableLiveData()
+    private val _genreDetailsResponse: MutableLiveData<TagAlbum> = MutableLiveData()
     val genreDetailsResponse: LiveData<TagAlbum> = _genreDetailsResponse
+
+    private val _genreAlbumsResponse: MutableLiveData<List<Album>> = MutableLiveData()
+    val genreAlbumsResponse: LiveData<List<Album>> = _genreAlbumsResponse
+
 
     init {
         viewModelScope.launch {
@@ -26,13 +31,21 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
         }
     }
 
-    fun getGenreDetails(genre : String){
+    fun getGenreDetails(genre: String) {
         viewModelScope.launch {
             val response = repository.getGenresDetails(genre)
-            if(response.isSuccessful){
+            if (response.isSuccessful) {
                 _genreDetailsResponse.value = response.body()!!.tag
             }
+        }
+    }
 
+    fun getGenreAlbums(genre: String) {
+        viewModelScope.launch {
+            val response = repository.getGenreAlbum(genre)
+            if (response.isSuccessful) {
+                _genreAlbumsResponse.value = response.body()!!.albums.album
+            }
         }
     }
 }
