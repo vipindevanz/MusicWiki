@@ -13,11 +13,21 @@ class ViewPagerAdapter(activity: FragmentActivity, private var tittle: String) :
     override fun createFragment(position: Int): Fragment {
 
         return when (position) {
-            0 -> AlbumsFragment(tittle)
-            1 -> ArtistsFragment(tittle)
-            2 -> TracksFragment(tittle)
+            0 -> {
+                AlbumsFragment.genreName = tittle
+                AlbumsFragment()
+            }
+            1 -> {
+                ArtistsFragment.genreName = tittle
+                ArtistsFragment()
+            }
+            2 -> {
+                TracksFragment.genreName = tittle
+                TracksFragment()
+            }
             else -> {
-                AlbumsFragment(tittle)
+                AlbumsFragment.genreName = tittle
+                AlbumsFragment()
             }
         }
     }

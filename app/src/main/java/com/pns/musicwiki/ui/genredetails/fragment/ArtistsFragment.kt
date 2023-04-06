@@ -15,12 +15,16 @@ import com.pns.musicwiki.ui.genredetails.adapter.ArtistsAdapter
 import com.pns.musicwiki.viewmodel.MainViewModel
 import com.pns.musicwiki.viewmodel.MainViewModelFactory
 
-class ArtistsFragment(private var genreName: String) : Fragment() {
+class ArtistsFragment : Fragment() {
 
     private lateinit var binding: FragmentArtistsBinding
     private lateinit var adapter: ArtistsAdapter
     private lateinit var viewModel: MainViewModel
     private lateinit var artistList: ArrayList<Artist>
+
+    companion object {
+        var genreName : String ?= null
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,7 +43,7 @@ class ArtistsFragment(private var genreName: String) : Fragment() {
         val viewModelFactory = MainViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
 
-        viewModel.getGenreArtists(genreName)
+        genreName?.let { viewModel.getGenreArtists(it) }
         viewModel.genreArtistsResponse.observe(viewLifecycleOwner) { artists ->
 
             artistList.clear()

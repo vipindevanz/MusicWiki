@@ -15,12 +15,16 @@ import com.pns.musicwiki.ui.genredetails.adapter.TracksAdapter
 import com.pns.musicwiki.viewmodel.MainViewModel
 import com.pns.musicwiki.viewmodel.MainViewModelFactory
 
-class TracksFragment(private var genreName: String) : Fragment() {
+class TracksFragment : Fragment() {
 
     private lateinit var binding: FragmentTracksBinding
     private lateinit var adapter: TracksAdapter
     private lateinit var viewModel: MainViewModel
     private lateinit var trackList: ArrayList<Track>
+
+    companion object {
+        var genreName : String ?= null
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,7 +46,7 @@ class TracksFragment(private var genreName: String) : Fragment() {
 
         viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
 
-        viewModel.getGenreTracks(genreName)
+        genreName?.let { viewModel.getGenreTracks(it) }
         viewModel.genreTracksResponse.observe(viewLifecycleOwner) { tracks ->
 
             trackList.clear()
