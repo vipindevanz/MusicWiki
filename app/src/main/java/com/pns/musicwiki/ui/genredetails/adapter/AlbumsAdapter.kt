@@ -38,7 +38,7 @@ class AlbumsAdapter(private var mContext: Context, private var albumList: Mutabl
 
         holder.binding.root.setOnClickListener {
             val mIntent = Intent(mContext, AlbumActivity::class.java)
-            mIntent.putExtra("tittle", albumList[position].name)
+            mIntent.putExtra("title", albumList[position].name)
             mIntent.putExtra("artist", albumList[position].artist.name)
             mContext.startActivity(mIntent)
         }
