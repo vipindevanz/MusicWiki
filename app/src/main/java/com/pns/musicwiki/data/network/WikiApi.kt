@@ -1,5 +1,6 @@
 package com.pns.musicwiki.data.network
 
+import com.pns.musicwiki.data.albumdetails.AlbumDetailsResponse
 import com.pns.musicwiki.data.genre.GenreResponse
 import com.pns.musicwiki.data.genredetails.GenreDetailsResponse
 import com.pns.musicwiki.data.genredetails.album.AlbumResponse
@@ -49,4 +50,13 @@ interface WikiApi {
         @Query("api_key") apiKey:String="c305ae29944dbfea31889c668799325d",
         @Query("format") format:String="json"
     ) : Response<TrackResponse>
+
+    @GET("/2.0")
+    suspend fun getAlbumDetails(
+        @Query("artist")artist:String,
+        @Query("album")album:String,
+        @Query("method") method:String="album.getInfo",
+        @Query("api_key") apiKey:String="c305ae29944dbfea31889c668799325d",
+        @Query("format") format:String="json"
+    ) : Response<AlbumDetailsResponse>
 }
