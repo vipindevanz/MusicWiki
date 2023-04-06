@@ -1,6 +1,8 @@
 package com.pns.musicwiki.data.network
 
-import com.pns.musicwiki.data.GenreResponse
+import com.pns.musicwiki.data.genre.GenreResponse
+import com.pns.musicwiki.data.genredetails.GenreDetailsResponse
+import com.pns.musicwiki.data.genredetails.album.AlbumResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -8,9 +10,19 @@ import retrofit2.http.Query
 interface WikiApi {
 
     @GET("/2.0")
-    suspend fun getTopTags(
+    suspend fun getGenres(
         @Query("method") method: String = "tag.getTopTags",
         @Query("api_key") apiKey: String = "c305ae29944dbfea31889c668799325d",
         @Query("format") format: String = "json"
     ): Response<GenreResponse>
+
+    @GET("/2.0")
+    suspend fun getGenresDetails(
+        @Query("tag") tag:String,
+        @Query("method") method:String="tag.getInfo",
+        @Query("api_key") apiKey:String="c305ae29944dbfea31889c668799325d",
+        @Query("format") format:String="json"
+    ): Response<GenreDetailsResponse>
+
+
 }
