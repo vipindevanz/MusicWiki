@@ -24,6 +24,8 @@ class AlbumActivity : AppCompatActivity() {
         binding = ActivityAlbumBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.back.setOnClickListener { finish() }
+
         setupRecyclerView()
 
         val info = intent

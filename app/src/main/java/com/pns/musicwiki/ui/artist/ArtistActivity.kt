@@ -17,9 +17,9 @@ import com.pns.musicwiki.viewmodel.MainViewModelFactory
 class ArtistActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityArtistBinding
-    lateinit var albumInfoGenreAdapter: AlbumGenreAdapter
-    lateinit var artistTopTracksAdapter: ArtistTopTracksAdapter
-    lateinit var artistTopAlbumsAdapter: ArtistTopAlbumsAdapter
+    private lateinit var albumInfoGenreAdapter: AlbumGenreAdapter
+    private lateinit var artistTopTracksAdapter: ArtistTopTracksAdapter
+    private lateinit var artistTopAlbumsAdapter: ArtistTopAlbumsAdapter
     private lateinit var viewModel: MainViewModel
 
     private lateinit var albumDetailsList: MutableList<Tag>
@@ -34,18 +34,18 @@ class ArtistActivity : AppCompatActivity() {
         binding = ActivityArtistBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.back.setOnClickListener { finish() }
+
         setupGenreRecyclerView()
         setupTopTrackRecyclerView()
         setupTopAlbumRecyclerView()
 
-        val aints = intent
-        //  val aname = aints.getStringExtra("ANAME")
-        val arname = aints.getStringExtra("artist")
+        val artist = intent.getStringExtra("artist")
 
         val repository = Repository()
         val viewModelFactory = MainViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
-        viewModel.getArtistInfo(arname.toString())
+        viewModel.getArtistInfo(artist.toString())
         viewModel.artistInfoResponse.observe(this) { response ->
 
             albumDetailsList.clear()
@@ -60,7 +60,7 @@ class ArtistActivity : AppCompatActivity() {
             Glide.with(this@ArtistActivity).load(response.image[0].text).into(binding.image)
         }
 
-        viewModel.getArtistTopTracks(arname.toString())
+        viewModel.getArtistTopTracks(artist.toString())
 
         viewModel.artistTopTracksResponse.observe(this) { topTracks ->
 
@@ -70,7 +70,7 @@ class ArtistActivity : AppCompatActivity() {
             artistTopTracksAdapter.notifyDataSetChanged()
         }
 
-        viewModel.getArtistTopAlbums(arname.toString())
+        viewModel.getArtistTopAlbums(artist.toString())
         viewModel.artistTopAlbumsResponse.observe(this) { topAlbums ->
 
             topAlbumList.clear()

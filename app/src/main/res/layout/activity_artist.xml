@@ -22,6 +22,14 @@
                 android:src="@drawable/placeholder"
                 tools:ignore="ContentDescription" />
 
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_arrow_back"
+                tools:ignore="ContentDescription" />
+
             <TextView
                 android:id="@+id/title"
                 android:layout_width="match_parent"
@@ -106,16 +114,14 @@
             android:id="@+id/desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_margin="5dp"
             android:maxLines="5"
             tools:text="Desc" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_margin="5dp"
             android:text="@string/top_tracks"
             android:textColor="@color/black"
             android:textSize="22sp"
@@ -132,8 +138,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_margin="5dp"
             android:text="@string/top_albums"
             android:textColor="@color/black"
             android:textSize="22sp"
