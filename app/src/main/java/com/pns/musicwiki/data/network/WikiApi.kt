@@ -1,6 +1,9 @@
 package com.pns.musicwiki.data.network
 
 import com.pns.musicwiki.data.albumdetails.AlbumDetailsResponse
+import com.pns.musicwiki.data.artistdetails.ArtistInfoResponse
+import com.pns.musicwiki.data.artistdetails.topalbums.ArtistTopAlbums
+import com.pns.musicwiki.data.artistdetails.toptracks.ArtistTopTracks
 import com.pns.musicwiki.data.genre.GenreResponse
 import com.pns.musicwiki.data.genredetails.GenreDetailsResponse
 import com.pns.musicwiki.data.genredetails.album.AlbumResponse
@@ -59,4 +62,28 @@ interface WikiApi {
         @Query("api_key") apiKey:String="c305ae29944dbfea31889c668799325d",
         @Query("format") format:String="json"
     ) : Response<AlbumDetailsResponse>
+
+    @GET("/2.0")
+    suspend fun getArtistInfo(
+        @Query("artist")artist:String,
+        @Query("method") method:String="artist.getInfo",
+        @Query("api_key") apiKey:String="9e24a63736c6a55cde40b9166fba6e35",
+        @Query("format") format:String="json"
+    ) : Response<ArtistInfoResponse>
+
+    @GET("/2.0")
+    suspend fun getArtistTopAlbums(
+        @Query("artist") artist:String,
+        @Query("method") method:String="artist.getTopAlbums",
+        @Query("api_key") apiKey:String="c305ae29944dbfea31889c668799325d",
+        @Query("format") format:String="json"
+    ): Response<ArtistTopAlbums>
+
+    @GET("/2.0")
+    suspend fun getArtistTopTracks(
+        @Query("artist") artist:String,
+        @Query("method") method:String="artist.getTopTracks",
+        @Query("api_key") apiKey:String="c305ae29944dbfea31889c668799325d",
+        @Query("format") format:String="json"
+    ) : Response<ArtistTopTracks>
 }
