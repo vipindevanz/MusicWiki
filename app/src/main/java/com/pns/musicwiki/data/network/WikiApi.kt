@@ -24,5 +24,11 @@ interface WikiApi {
         @Query("format") format:String="json"
     ): Response<GenreDetailsResponse>
 
-
+    @GET("/2.0")
+    suspend fun getAlbums(
+        @Query("tag") tag:String,
+        @Query("method") method:String="tag.getTopAlbums",
+        @Query("api_key") apiKey:String="c305ae29944dbfea31889c668799325d",
+        @Query("format") format:String="json"
+    ): Response<AlbumResponse>
 }
