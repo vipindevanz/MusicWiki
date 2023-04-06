@@ -4,6 +4,7 @@ import com.pns.musicwiki.data.genre.GenreResponse
 import com.pns.musicwiki.data.genredetails.GenreDetailsResponse
 import com.pns.musicwiki.data.genredetails.album.AlbumResponse
 import com.pns.musicwiki.data.genredetails.artist.ArtistResponse
+import com.pns.musicwiki.data.genredetails.tracks.TrackResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -40,4 +41,12 @@ interface WikiApi {
         @Query("api_key") apiKey:String="c305ae29944dbfea31889c668799325d",
         @Query("format") format:String="json"
     ): Response<ArtistResponse>
+
+    @GET("/2.0")
+    suspend fun getTracks(
+        @Query("tag") tag:String,
+        @Query("method") method:String="tag.getTopTracks",
+        @Query("api_key") apiKey:String="c305ae29944dbfea31889c668799325d",
+        @Query("format") format:String="json"
+    ) : Response<TrackResponse>
 }
