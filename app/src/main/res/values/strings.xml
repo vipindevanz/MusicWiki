@@ -2,4 +2,7 @@
     <string name="app_name">MusicWiki</string>
     <string name="welcome">Welcome!</string>
     <string name="choose_genre">Choose a genre to start with</string>
+    <string name="albums">Albums</string>
+    <string name="artists">Artists</string>
+    <string name="tracks">Tracks</string>
 </resources>
