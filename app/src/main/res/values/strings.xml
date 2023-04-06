@@ -5,4 +5,8 @@
     <string name="albums">Albums</string>
     <string name="artists">Artists</string>
     <string name="tracks">Tracks</string>
+    <string name="play_count">Play Count</string>
+    <string name="followers">Followers</string>
+    <string name="top_tracks">Top Tracks</string>
+    <string name="top_albums">Top Albums</string>
 </resources>
