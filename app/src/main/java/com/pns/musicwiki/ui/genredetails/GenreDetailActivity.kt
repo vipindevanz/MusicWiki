@@ -24,6 +24,8 @@ class GenreDetailActivity : AppCompatActivity() {
         binding = ActivityGenreDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.back.setOnClickListener { finish() }
+
         val genre = intent?.getStringExtra("genre")
 
         viewPagerAdapter = ViewPagerAdapter(this, genre.toString())
