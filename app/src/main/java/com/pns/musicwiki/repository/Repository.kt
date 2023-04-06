@@ -1,6 +1,9 @@
 package com.pns.musicwiki.repository
 
 import com.pns.musicwiki.data.albumdetails.AlbumDetailsResponse
+import com.pns.musicwiki.data.artistdetails.ArtistInfoResponse
+import com.pns.musicwiki.data.artistdetails.topalbums.ArtistTopAlbums
+import com.pns.musicwiki.data.artistdetails.toptracks.ArtistTopTracks
 import com.pns.musicwiki.data.genre.GenreResponse
 import com.pns.musicwiki.data.genredetails.GenreDetailsResponse
 import com.pns.musicwiki.data.genredetails.album.AlbumResponse
@@ -33,5 +36,17 @@ class Repository {
 
     suspend fun getAlbumDetails(artist: String, album: String): Response<AlbumDetailsResponse> {
         return ApiClient.getWikiApi().getAlbumDetails(artist, album)
+    }
+
+    suspend fun getArtistInfo(artist: String):Response<ArtistInfoResponse>{
+        return ApiClient.getWikiApi().getArtistInfo(artist)
+    }
+
+    suspend fun getArtistTopAlbums(artist: String):Response<ArtistTopAlbums>{
+        return ApiClient.getWikiApi().getArtistTopAlbums(artist)
+    }
+
+    suspend fun getArtistTopTracks(artist: String):Response<ArtistTopTracks>{
+        return ApiClient.getWikiApi().getArtistTopTracks(artist)
     }
 }
