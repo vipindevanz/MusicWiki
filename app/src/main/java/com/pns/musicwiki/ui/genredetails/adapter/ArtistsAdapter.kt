@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.pns.musicwiki.data.genredetails.artist.Artist
 import com.pns.musicwiki.databinding.GenreDetailItemLayoutBinding
-import com.pns.musicwiki.ui.artist.ArtistActivity
+import com.pns.musicwiki.ui.artistdetails.ArtistActivity
 
 class ArtistsAdapter(var context: Context, private var artistList: MutableList<Artist>) :
     RecyclerView.Adapter<ArtistsAdapter.GenreArtistsViewHolder>() {
@@ -34,7 +34,7 @@ class ArtistsAdapter(var context: Context, private var artistList: MutableList<A
         holder.binding.apply {
             this.artist.text = artist.name
             title.visibility = View.GONE
-            Glide.with(context).load(artist.image[0].text).into(image)
+            Glide.with(context).load(artist.image[artist.image.size - 1].text).into(image)
         }
 
         holder.binding.root.setOnClickListener {

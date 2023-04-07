@@ -1,4 +1,4 @@
-package com.pns.musicwiki.ui.artist
+package com.pns.musicwiki.ui.artistdetails
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -30,7 +30,7 @@ class ArtistTopAlbumsAdapter(
         holder.binding.apply {
             title.text = topTrackAlbumList[position].name
             artist.text = topTrackAlbumList[position].artist.name
-            Glide.with(image).load(topTrackAlbumList[position].image[0].text).into(image)
+            Glide.with(image).load(topTrackAlbumList[position].image[topTrackAlbumList[position].image.size-1].text).into(image)
         }
     }
 

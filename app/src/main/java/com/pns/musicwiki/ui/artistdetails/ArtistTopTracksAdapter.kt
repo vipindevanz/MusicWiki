@@ -1,4 +1,4 @@
-package com.pns.musicwiki.ui.artist
+package com.pns.musicwiki.ui.artistdetails
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -28,7 +28,9 @@ class ArtistTopTracksAdapter(private var topTrackList: MutableList<TrackT>) :
         holder.binding.apply {
             title.text = topTrackList[position].name
             artist.text = topTrackList[position].artist.name
-            Glide.with(image).load(topTrackList[position].image[0].text).into(image)
+            Glide.with(image)
+                .load(topTrackList[position].image[topTrackList[position].image.size - 1].text)
+                .into(image)
         }
     }
 

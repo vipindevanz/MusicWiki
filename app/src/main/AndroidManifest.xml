@@ -16,14 +16,14 @@
         android:theme="@style/Theme.MusicWiki"
         tools:targetApi="31">
         <activity
-            android:name=".ui.artist.ArtistActivity"
+            android:name=".ui.artistdetails.ArtistActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.album.AlbumActivity"
+            android:name=".ui.albumdetails.AlbumActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

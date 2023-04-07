@@ -67,7 +67,7 @@ interface WikiApi {
     suspend fun getArtistInfo(
         @Query("artist")artist:String,
         @Query("method") method:String="artist.getInfo",
-        @Query("api_key") apiKey:String="9e24a63736c6a55cde40b9166fba6e35",
+        @Query("api_key") apiKey:String="c305ae29944dbfea31889c668799325d",
         @Query("format") format:String="json"
     ) : Response<ArtistInfoResponse>
 

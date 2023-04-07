@@ -30,7 +30,7 @@ class TracksAdapter(private val trackList: MutableList<Track>) :
         holder.binding.apply {
             title.text = track.name
             artist.text = track.name
-            Glide.with(image).load(track.image[0].text).into(image)
+            Glide.with(image).load(track.image.size - 1).into(image)
         }
     }
 

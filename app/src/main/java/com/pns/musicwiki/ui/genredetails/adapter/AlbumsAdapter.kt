@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.pns.musicwiki.data.genredetails.album.Album
 import com.pns.musicwiki.databinding.GenreDetailItemLayoutBinding
-import com.pns.musicwiki.ui.album.AlbumActivity
+import com.pns.musicwiki.ui.albumdetails.AlbumActivity
 
 class AlbumsAdapter(private var mContext: Context, private var albumList: MutableList<Album>) :
     RecyclerView.Adapter<AlbumsAdapter.GenreAlbumsViewHolder>() {

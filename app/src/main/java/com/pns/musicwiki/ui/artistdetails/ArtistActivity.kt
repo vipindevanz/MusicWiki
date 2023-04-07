@@ -1,4 +1,4 @@
-package com.pns.musicwiki.ui.artist
+package com.pns.musicwiki.ui.artistdetails
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -57,7 +57,8 @@ class ArtistActivity : AppCompatActivity() {
             binding.desc.text = response.bio.toString()
             binding.playCount.text = response.stats.playcount
             binding.followers.text = response.stats.listeners
-            Glide.with(this@ArtistActivity).load(response.image[0].text).into(binding.image)
+            Glide.with(this@ArtistActivity).load(response.image[response.image.size - 1].text)
+                .into(binding.image)
         }
 
         viewModel.getArtistTopTracks(artist.toString())

@@ -1,4 +1,4 @@
-package com.pns.musicwiki.ui.artist
+package com.pns.musicwiki.ui.artistdetails
 
 import android.content.Context
 import android.content.Intent
