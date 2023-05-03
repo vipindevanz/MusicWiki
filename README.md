@@ -26,5 +26,5 @@ genres, the albums, artists and tracks listed under the genre.
 
 - As several API responses shared similar class names, I separated them into distinct packages in order to prevent any potential conflicts.
 
-### Try the app here [MusicWiki](https://drive.google.com/uc?export=download&id=1kh14oOHO8yqqjf6HBlHASHEzNrg-I0MI)
+### Try the app here [MusicWiki]
 Turn off the app lock for google play and choose `install anyhow` when prompt occures while installing the app.
