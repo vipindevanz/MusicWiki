@@ -19,7 +19,7 @@ class Adapter(private var context: Context, private var albumDetailsList: Mutabl
             GenreItemBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
-                false // fkdlfkeee
+                false // fkdlfkeeee
             )
         )
     }
